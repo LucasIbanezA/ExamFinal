@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confirmación</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <p>{{ mensaje }}</p>
+    <ion-button expand="block" color="danger" (click)="confirmar()">Confirmar</ion-button>
+    <ion-button expand="block" color="light" (click)="cancelar()">Cancelar</ion-button>
+  </div>
+</ion-content>

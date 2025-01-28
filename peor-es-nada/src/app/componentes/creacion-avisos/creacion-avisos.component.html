@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="regresarALista()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crear Aviso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (submit)="guardarAviso()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input [(ngModel)]="aviso.titulo" name="titulo" required></ion-input>
+    </ion-item>
+    <div *ngIf="errores.titulo" class="error-text">
+      {{ errores.titulo }}
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="aviso.descripcion" name="descripcion" required></ion-textarea>
+    </ion-item>
+    <div *ngIf="errores.descripcion" class="error-text">
+      {{ errores.descripcion }}
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <ion-datetime
+        [(ngModel)]="aviso.fecha"
+        name="fecha"
+        displayFormat="YYYY-MM-DD"
+        required
+      ></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Foto</ion-label>
+      <ion-button expand="block" (click)="capturarFoto()">Tomar Foto</ion-button>
+    </ion-item>
+
+    <ion-item *ngIf="aviso.foto">
+      <img [src]="aviso.foto" alt="Foto capturada" style="width: 100%; border-radius: 8px;" />
+    </ion-item>
+
+    <ion-button expand="block" type="submit" color="primary">Guardar Aviso</ion-button>
+  </form>
+</ion-content>
